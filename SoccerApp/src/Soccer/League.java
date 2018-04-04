@@ -1,15 +1,14 @@
 package Soccer;
 
-import sun.font.CreatedFontTracker;
 import utility.GameUtility;
 
 public class League {
 
     public static void main(String[] args) {
         // TO-DO app;
-
-        Team[] teams = createTeams();
-        Game[] theGames = createGames(teams);
+    	League theLeague = new League();
+        Team[] teams = theLeague.createTeams();
+        Game[] theGames = theLeague.createGames(teams);
         Game currGame = theGames[0];
         currGame.playGame();
         System.out.println(currGame.getDescription());
@@ -27,7 +26,7 @@ public class League {
         
     }
 
-    public static Team[] createTeams() {								//Criar equipas e jogadores
+    public Team[] createTeams() {								//Criar equipas e jogadores
     	Player player1 = new Player();
         player1.playerName = "George Eliot";
         Player player2 = new Player();
@@ -53,7 +52,7 @@ public class League {
         return teams;
     }
     
-    public static Game[] createGames(Team[] theTeams) {  // Criar o jogo
+    public Game[] createGames(Team[] theTeams) {  // Criar o jogo
     	 Game currGame = new Game();
          currGame.homeTeam = theTeams[0];
          currGame.awayTeam = theTeams[1];
