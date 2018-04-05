@@ -2,6 +2,21 @@ package Soccer;
 
 public class Player {
 
-    public String playerName;
+    private String playerName;
+    
+    public Player (String playerName) {				//construtor do player;
+    	this.playerName = playerName;
+    }
+    
+    
+    
+
+	public String getPlayerName() {
+		return playerName;
+	}
+
+	public void setPlayerName(String playerName) {
+		this.playerName = playerName;
+	}
 
 }

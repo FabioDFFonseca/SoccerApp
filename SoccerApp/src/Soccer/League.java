@@ -9,54 +9,42 @@ public class League {
     	League theLeague = new League();
         Team[] teams = theLeague.createTeams();
         Game[] theGames = theLeague.createGames(teams);
-        Game currGame = theGames[0];
-        currGame.playGame();
-        System.out.println(currGame.getDescription());
-       
         
-//        Goal goal1 = new Goal();
-//        goal1.thePlayer = currGame.homeTeam.playerArray[2];
-//        goal1.theTeam = currGame.homeTeam;
-//        goal1.theTime = 55;
-//
-//        Goal[] theGoals = {goal1};
-//        currGame.goals = theGoals;
-//        System.out.println("Goal scored after " + currGame.goals[0].theTime + " mins by " + currGame.goals[0].thePlayer.playerName + " of " + currGame.goals[0].theTeam.teamName);
-        
+        int contador = 1;
+        for(Game currGame: theGames) {
+   		 currGame.playGame();
+   		 System.out.println("Game:" + contador);
+   		 System.out.println(currGame.getDescription());
+   		 contador++;
+   	 }
         
     }
 
     public Team[] createTeams() {								//Criar equipas e jogadores
-    	Player player1 = new Player();
-        player1.playerName = "George Eliot";
-        Player player2 = new Player();
-        player2.playerName = "Graham Greene";
-        Player player3 = new Player();
-        player3.playerName = "Geoffrey Chaucer";
+    	Player player1 = new Player("George Eliot");
+        Player player2 = new Player("Graham Greene");
+        Player player3 = new Player("Geoffrey Chaucer");
     	Player[] thePlayers = {player1, player2, player3};
     	
-    	Team team1 = new Team();
-        team1.teamName = "The Greens";
-        team1.playerArray = thePlayers;
+    	Team team1 = new Team("The Greens");
+        team1.setPlayerArray(thePlayers);
         Team team2 = new Team();
-        team2.teamName = "the Reds";
-        team2.playerArray = new Player[3];
-        team2.playerArray[0] = new Player();
-        team2.playerArray[0].playerName = "Robert Service";
-        team2.playerArray[1] = new Player();
-        team2.playerArray[1].playerName = "Robbie Burns";
-        team2.playerArray[2] = new Player();
-        team2.playerArray[2].playerName = "Rafael Sabatini";
+        team2.setTeamName("The Reds");
+        team2.setPlayerArray(new Player[3]);
+        team2.getPlayerArray()[0] = new Player("Robert Service");
+        team2.getPlayerArray()[1] = new Player("Robbie Burns");
+        team2.getPlayerArray()[2] = new Player("Rafael Sabatini");
         
-        Team[] teams = {team1, team1};
+        Team[] teams = {team1, team2};
         return teams;
     }
     
-    public Game[] createGames(Team[] theTeams) {  // Criar o jogo
-    	 Game currGame = new Game();
-         currGame.homeTeam = theTeams[0];
-         currGame.awayTeam = theTeams[1];
-         Game[] theGames = {currGame};
+    public Game[] createGames(Team[] teams) {  // Criar o jogo
+    	 Game currGame = new Game(teams[0], teams[1]);
+    	 Game currGame2 = new Game(teams[1], teams[0]);
+    	 Game currGame3 = new Game(teams[0], teams[1]);
+    	 Game currGame4 = new Game(teams[1], teams[0]);
+         Game[] theGames = {currGame, currGame2, currGame3, currGame4};
          return theGames;
     }
     
