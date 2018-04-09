@@ -51,21 +51,29 @@ public class League {
     
     public void showBestTeam(Team[] theTeams) {
     	Team currBestTeam = theTeams[0];
-    	Team currTeam = theTeams[1];
-    	System.out.println("\nTeam Points");
-//    	for(Team currTeam: theTeams) {
-//    		System.out.println(currTeam.getTeamName() + ":" + currTeam.getPointsTotal());
-//    		currBestTeam = currTeam.getPointsTotal() > currBestTeam.getPointsTotal() ? currTeam:currBestTeam;
+    	System.out.println("\nTeam Points:");
+    	for(Team currTeam: theTeams) {
+    		System.out.println(currTeam.getTeamName() + ":" + currTeam.getPointsTotal() + " --" + "Total goals: "+ currTeam.getGoalsTotal());
+  		currBestTeam = currTeam.getPointsTotal() > currBestTeam.getPointsTotal() ? currTeam:currBestTeam;
+//  		if(currTeam.getPointsTotal() > currBestTeam.getPointsTotal()) {
+//    		currBestTeam = currTeam;
+//    	}else if(currTeam.getPointsTotal() == currBestTeam.getPointsTotal()) {
+//    		if(currTeam.getGoalsTotal() > currBestTeam.getGoalsTotal()) {
+//    			currBestTeam = currTeam;
+//    		}
 //    	}
-    	if(currTeam.getPointsTotal() > currBestTeam.getPointsTotal()) {
-    		currBestTeam = currTeam;
-    	}else if(currTeam.getPointsTotal() == currBestTeam.getPointsTotal()) {
-    		if(currTeam.getGoalsTotal() > currBestTeam.getGoalsTotal()) {
-    			currBestTeam = currTeam;
-    		}
-    	}
-    	System.out.println(currTeam.getTeamName() + ":" + currTeam.getPointsTotal() + " --" + currTeam.getGoalsTotal);
-    	System.out.println("Winner of the League is : " + currTeam.getTeamName());
+  		if(currTeam.getPointsTotal() == currBestTeam.getPointsTotal()) {
+  			currBestTeam = currTeam;
+  		}else if(currTeam.getPointsTotal() == currBestTeam.getPointsTotal()) {
+  			if(currTeam.getGoalsTotal() > currBestTeam.getGoalsTotal()) {
+  				
+  			}
+  		}
+    }
+    	
+    	System.out.println("Winner of the League is : " + currBestTeam.getTeamName());
+    	System.out.println(currBestTeam.getTeamName() + ":" + "\tTotal points: " + currBestTeam.getPointsTotal() + " \tTotal Goals: " + currBestTeam.getGoalsTotal);
+    	
     	
     }
     

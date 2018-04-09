@@ -8,9 +8,7 @@ public class Team {
     private int goalsTotal;
 	public int  getGoalsTotal;
     
-    public void incPointsTotal(int pointsTotal){
-    	this.pointsTotal += pointsTotal;
-    }   
+   
     
     public Team (String teamName) {
     	this.teamName = teamName;
@@ -39,20 +37,24 @@ public class Team {
 	public void setPlayerArray(Player [] playerArray) {
 		this.playerArray = playerArray;
 	}
-
-	int getPointsTotal() {
+	public void incPointsTotal(int pointsTotal){
+    	this.pointsTotal += pointsTotal;
+    }   
+	
+	public int getPointsTotal() {
 		return pointsTotal;
 	}
 
+	@SuppressWarnings("unused")
 	private void setPointsTotal(int pointsTotal) {
 		this.pointsTotal = pointsTotal;
 	}
 	
 	public void incGoalsTotal(int goals) {
-		this.setGoalsTotal(this.getGoalsTotal() + goals);
+		this.goalsTotal += goals;
 	}
 
-	int getGoalsTotal() {
+	public int getGoalsTotal() {
 		return goalsTotal;
 	}
 
