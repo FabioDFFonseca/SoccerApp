@@ -1,5 +1,9 @@
 package Soccer;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import sun.management.HotspotMemoryMBean;
 import utility.GameUtility;
 
@@ -7,6 +11,7 @@ public class Game {
 	private Team homeTeam;
 	private Team awayTeam;
 	private Goal[] goals;
+	private LocalDateTime theDateTime;
 
 	public void playGame(int maxGoals) {
 		int numberOfGoals = (int) (Math.random() * maxGoals + 1);
@@ -16,9 +21,10 @@ public class Game {
 
 	}
 
-	public Game(Team homeTeam, Team awayTeam) {
+	public Game(Team homeTeam, Team awayTeam, LocalDateTime theDateTime) {
 		this.homeTeam = homeTeam;
 		this.awayTeam = awayTeam;
+		this.theDateTime = theDateTime;
 	}
 
 	public void playGame() {
@@ -30,7 +36,7 @@ public class Game {
 		int awayTeamGoals = 0;
 
 		StringBuilder returnString = new StringBuilder();
-		returnString.append(homeTeam.getTeamName() + " vs " + awayTeam.getTeamName() + "\n");
+		returnString.append(homeTeam.getTeamName() + " vs " + awayTeam.getTeamName() + "\n" + "Date " + this.theDateTime.format(DateTimeFormatter.ISO_LOCAL_DATE) + "\n");
 		for (Goal currGoal : this.getGoals()) {
 			if (currGoal.getTheTeam() == homeTeam) {
 				homeTeamGoals++;
@@ -81,5 +87,15 @@ public class Game {
 	public void setGoals(Goal[] goals) {
 		this.goals = goals;
 	}
+
+	public LocalDateTime getTheDateTime() {
+		return theDateTime;
+	}
+
+	public void setTheDateTime(LocalDateTime theDateTime) {
+		this.theDateTime = theDateTime;
+	}
+	
+	
 
 }
