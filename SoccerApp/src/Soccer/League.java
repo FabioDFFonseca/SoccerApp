@@ -17,15 +17,13 @@ public class League {
 		Game[] theGames = theLeague.createGames(theTeams);
 
 		System.out.println(theLeague.getLeagueAnnouncement(theGames));
-		int contador = 1;
+		
 		for (Game currGame : theGames) {
 			currGame.playGame();
-			System.out.println("Game:" + contador);
 			System.out.println(currGame.getDescription(theTeams));
-			contador++;
-			theLeague.showBestTeam(theTeams);
+			
 		}
-
+		theLeague.showBestTeam(theTeams);
 	}
 
 	public Team[] createTeams(String teamName, int teamSize) { // Criar equipas e jogadores
@@ -83,18 +81,18 @@ public class League {
 			// currBestTeam = currTeam;
 			// }
 			// }
-			if (currTeam.getPointsTotal() == currBestTeam.getPointsTotal()) {
+			if (currTeam.getPointsTotal() > currBestTeam.getPointsTotal()) {
 				currBestTeam = currTeam;
 			} else if (currTeam.getPointsTotal() == currBestTeam.getPointsTotal()) {
 				if (currTeam.getGoalsTotal() > currBestTeam.getGoalsTotal()) {
-
+					currBestTeam = currTeam;
 				}
 			}
 		}
 
 		System.out.println("Winner of the League is : " + currBestTeam.getTeamName());
 		System.out.println(currBestTeam.getTeamName() + ":" + "\tTotal points: " + currBestTeam.getPointsTotal()
-				+ " \tTotal Goals: " + currBestTeam.getGoalsTotal);
+				+ " \tTotal Goals: " + currBestTeam.getGoalsTotal());
 
 	}
 
